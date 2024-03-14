@@ -10,9 +10,11 @@ acessar http://localhost/phpmyadmin/
 
 criar um banco chamado crud_laravel
 
-acessar o terminal do vscodo e digitar cd e-learnig
+acessar o terminal do vscodo e digitar cd teste_ecode 
 
-depois digitar mv .env.example .env
+cd e-learning
+
+depois digitar 'mv .env.example .env'
 
 composer install
 
