@@ -1,6 +1,6 @@
 # teste_ecode
 
-git clone
+git clone https://github.com/CarlosMantovani/teste_ecode
 
 instalar o xammp atraves desse site https://www.apachefriends.org/download.html com essa versao
 
