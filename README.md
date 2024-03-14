@@ -14,9 +14,10 @@ acessar o terminal do vscodo e digitar cd e-learnig
 
 depois digitar mv .env.example .env
 
+composer install
+
 no arquivo .env mudar DB_DATABASE=laravel para DB_DATABASE=crud_laravel
 
-abrir o termminal e digitar composer install
 php artisan migrate
 
 php artisan key:generate
