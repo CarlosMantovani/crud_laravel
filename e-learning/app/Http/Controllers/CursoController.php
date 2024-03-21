@@ -17,6 +17,12 @@ class CursoController extends Controller
 
         return view('mostrar-curso', compact('curso'));
     }
+
+   
+    public function create()
+{
+    return view('cadastrar');
+}
     public function criarCurso(Request $request)
     {
         
@@ -65,7 +71,7 @@ class CursoController extends Controller
             $curso->descricao = $request->desc;
         }
     
-        // Verifique se houve alguma modificação
+        
         if ($curso->isDirty()) {
             $curso->save();  
         } 
