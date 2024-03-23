@@ -18,6 +18,12 @@ depois digitar 'mv .env.example .env'
 
 composer install
 
+composer require laravel/ui
+php artisan ui bootstrap --auth
+no para todas as opçoes 
+npm install
+npm run dev
+
 no arquivo .env mudar DB_DATABASE=laravel para DB_DATABASE=crud_laravel
 
 php artisan migrate
