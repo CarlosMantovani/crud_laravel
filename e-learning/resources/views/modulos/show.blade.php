@@ -10,28 +10,26 @@
   <body>
    
 <div class="container">
-  <h1 style="text-align: center">Detalhes Do Curso</h1>
+  <h1 style="text-align: center">Detalhes Do Modulo</h1>
       <table class="table">
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Nome do Curso</th>
-              <th scope="col">Titulo</th>
-              <th scope="col">Descrição</th>
+              <th scope="col">Nome do Modulo</th>
+              <th scope="col">Curso</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{{ $curso->id }}</td>
+              <td>{{ $modulo->id }}</td>
+              <td>{{ $modulo->titulo }}</td>
               <td>{{ $curso->nome_curso }}</td>
-              <td>{{ $curso->curso_id  }}</td>
-              <td>{{ $curso->descricao }}</td>
             </tr>
   
           </tbody>
   
         </table>
-        <a href="{{route('cursos.index')}}"><button type="button" class="btn btn-warning">Voltar</button></a>
+        <a href="{{route('modulos.index')}}"><button type="button" class="btn btn-warning">Voltar</button></a>
 </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Modulo;
 
 class Curso extends Model
 {
@@ -13,11 +14,10 @@ class Curso extends Model
         'titulo',
         'descricao',
     ];
-   /* protected $casts = [
-        'quantidade_modulos' => 'integer',
-        'quantidade_aulas' => 'integer',
-    ];*/
-    public function relModulos(){
-        return $this->hasMany('App\Models\Modulos', 'id_modulo');
+   
+   
+    public function relModulo(): HasMany{
+    
+        return $this->hasMany(Modulo::class);
     }
 }

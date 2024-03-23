@@ -28,7 +28,7 @@ class CursoController extends Controller
         'descricao' => $request->input('desc'),
     ]);
     $cursos = Curso::all();
-    return view('/cursos/index', compact('cursos'));
+    return view('/modulos/create', compact('cursos'));
     }
 
     public function show($id)
