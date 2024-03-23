@@ -5,63 +5,52 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use Illuminate\Database\QueryException;
 class CursoController extends Controller
+
 {
-    public function listarCursos()
+    public function index()
     {
-        $cursos = Curso::all(); 
-        return view('cursos', compact('cursos'));
-    }
-    public function mostrarDetalhes($id_do_curso)
-    {
-        $curso = Curso::findOrFail($id_do_curso);
-
-        return view('mostrar-curso', compact('curso'));
+        $cursos = Curso::all();
+        return view('cursos.index', compact('cursos'));
     }
 
-   
     public function create()
-{
-    return view('cadastrar');
-}
-    public function criarCurso(Request $request)
+    {
+        return view('/cursos/create');
+    }
+
+    public function store(Request $request)
     {
         
-    try {
+        
     Curso::create([
         'nome_curso' => $request->input('nome'),
-        'quantidade_modulos' => $request->input('qtd_modulos'),
-        'quantidade_aulas' => $request->input('qtd_aulas'),
         'titulo' => $request->input('titulo_curso'),
         'descricao' => $request->input('desc'),
     ]);
-
-    return redirect()->route('listar-cursos');
-} catch (QueryException $e) {
-    return back()->withInput()->withErrors(['error' => 'Erro insira apenas numeros nos campus Quantidade De Modulos e Aulas']);
-}
-        
-    }
-    public function editar($id_do_curso)
-    {
-        $curso = Curso::findOrFail($id_do_curso);
-        return view('editar_curso', compact('curso'));
+    $cursos = Curso::all();
+    return view('/cursos/index', compact('cursos'));
     }
 
-    public function atualizar(Request $request, $id_do_curso)
+    public function show($id)
     {
-        $curso = Curso::findOrFail($id_do_curso);
+        $curso = Curso::findOrFail($id);
+        return view('/cursos/show', compact('curso'));
+    }
+
+    public function edit($id)
+    {
+        $curso = Curso::findOrFail($id);
+        return view('/cursos/edit', compact('curso'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $curso = Curso::findOrFail($id);
 
         if ($request->filled('nome') && $request->nome != $curso->nome_curso) {
             $curso->nome_curso = $request->nome;
         }
     
-        if ($request->filled('qtd_modulos') && $request->qtd_modulos != $curso->quantidade_modulos) {
-            $curso->quantidade_modulos = $request->qtd_modulos;
-        }
-    
-        if ($request->filled('qtd_aulas') && $request->qtd_aulas != $curso->quantidade_aulas) {
-            $curso->quantidade_aulas = $request->qtd_aulas;
-        }
     
         if ($request->filled('titulo_curso') && $request->titulo_curso != $curso->titulo) {
             $curso->titulo = $request->titulo_curso;
@@ -75,12 +64,13 @@ class CursoController extends Controller
         if ($curso->isDirty()) {
             $curso->save();  
         } 
-            return redirect()->route('listar-cursos');
+            return redirect()->route('cursos.index');
     }
-     public function deletar($id_do_curso){
-            $curso = Curso::findOrFail($id_do_curso);
-            $curso->delete();
-            return redirect()->route('listar-cursos');
 
+    public function destroy($id)
+    {
+        $curso = Curso::findOrFail($id);
+        $curso->delete();
+        return redirect()->route('cursos.index')->with('success', 'Curso deletado com sucesso.');
     }
 }

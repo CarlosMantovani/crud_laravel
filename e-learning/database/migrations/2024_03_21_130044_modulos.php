@@ -8,27 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('cursos', function (Blueprint $table) {
+        Schema::create('modulos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_curso', 255);
-            $table->string('titulo', 255);
-            $table->string('descricao', 255);
+            $table->unsignedBigInteger('curso_id');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->string('titulo');
             $table->timestamps();
         });
+        
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('cursos');
+        //
     }
 };

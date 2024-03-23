@@ -16,8 +16,6 @@
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nome do Curso</th>
-              <th scope="col">Quantidade De Modulos</th>
-              <th scope="col">Quantidade De Aulas</th>
               <th scope="col">Titulo</th>
               <th scope="col">Descrição</th>
             </tr>
@@ -26,8 +24,6 @@
             <tr>
               <td>{{ $curso->id }}</td>
               <td>{{ $curso->nome_curso }}</td>
-              <td>{{ $curso->quantidade_modulos }}</td>
-              <td>{{ $curso->quantidade_aulas }}</td>
               <td>{{ $curso->titulo  }}</td>
               <td>{{ $curso->descricao }}</td>
             </tr>
@@ -35,7 +31,7 @@
           </tbody>
   
         </table>
-        <a href="/listar-cursos"><button type="button" class="btn btn-warning">Voltar</button></a>
+        <a href="{{route('cursos.index')}}"><button type="button" class="btn btn-warning">Voltar</button></a>
 </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
