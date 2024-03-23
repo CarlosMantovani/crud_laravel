@@ -10,13 +10,14 @@ class Curso extends Model
     use HasFactory;
     protected $fillable=[
         'nome_curso',
-        'quantidade_modulos',
-        'quantidade_aulas',
         'titulo',
         'descricao',
     ];
-    protected $casts = [
+   /* protected $casts = [
         'quantidade_modulos' => 'integer',
         'quantidade_aulas' => 'integer',
-    ];
+    ];*/
+    public function relModulos(){
+        return $this->hasMany('App\Models\Modulos', 'id_modulo');
+    }
 }

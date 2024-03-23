@@ -35,8 +35,8 @@
                                 Ações
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="{{route('salvar-curso')}}">Cadastrar Curso</a></li>
-                              <li><a class="dropdown-item" href="{{route('listar-cursos')}}">Listagem Cursos</a></li> 
+                              <li><a class="dropdown-item" href="{{route('cursos.create')}}">Cadastrar Curso</a></li>
+                              <li><a class="dropdown-item" href="{{route('cursos.index')}}">Listagem Cursos</a></li> 
                             </ul>
                           </li>
                     </ul>

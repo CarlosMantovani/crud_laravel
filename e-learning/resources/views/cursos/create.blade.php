@@ -20,20 +20,14 @@
             </ul>
         </div>
     @endif
-<form class="row g-3" action="{{ route('salvar-curso') }}" method="POST">
+<form class="row g-3" action="{{ route('cursos.store') }}" method="POST">
     @csrf
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Nome do Curso</label>
       <input type="text" class="form-control" id="inputAddress" name="nome"required >
     </div>
-    <div class="col-md-6">
-      <label for="inputAddress" class="form-label">Quantidade De Modulos</label>
-      <input type="text" class="form-control" id="inputAddress" name="qtd_modulos" required>
-    </div>
-    <div class="col-12">                                                 
-      <label for="inputAddress" class="form-label">Quantidade De Aulas</label>
-      <input type="text" class="form-control" id="inputAddress" name="qtd_aulas" required>
-    </div>
+    
+  
     <div class="col-12">
       <label for="inputAddress2" class="form-label">Titulo</label>
       <input type="text" class="form-control" id="inputAddress2"  name="titulo_curso" required>
@@ -47,7 +41,7 @@
       <button class="btn btn-primary">Cadastrar</button>
     </div>
   </form>
-  <a href="{{'/listar-cursos'}}"><button class="btn btn-primary mt-2">Voltar</button></a> 
+  <a href="{{route('cursos.index')}}"><button class="btn btn-primary mt-2">Voltar</button></a> 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>

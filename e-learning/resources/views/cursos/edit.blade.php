@@ -20,21 +20,14 @@
           </ul>
       </div>
   @endif
-<form class="row g-3" action="{{ route('atualizar-curso', ['id_do_curso' => $curso->id]) }}" method="POST">
+<form class="row g-3" action="{{ route('cursos.update', $curso->id) }}" method="POST">
     @csrf
     @method('PUT')  
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Nome do Curso</label>
       <input type="text" class="form-control" id="inputAddress" name="nome" required value="{{ $curso->nome_curso }}">
     </div>
-    <div class="col-md-6">
-      <label for="inputAddress" class="form-label">Quantidade De Modulos</label>
-      <input type="text" class="form-control" id="inputAddress" name="qtd_modulos" required value="{{ $curso->quantidade_modulos }}">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">Quantidade De Aulas</label>
-      <input type="text" class="form-control" id="inputAddress" name="qtd_aulas" required value="{{ $curso->quantidade_aulas }}">
-    </div>
+    
     <div class="col-12">
       <label for="inputAddress2" class="form-label">Titulo</label>
       <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="titulo_curso" required value="{{ $curso->titulo }}">
