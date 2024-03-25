@@ -19,10 +19,16 @@ depois digitar 'mv .env.example .env'
 composer install
 
 composer require laravel/ui
+
 php artisan ui bootstrap --auth
+
 no para todas as opçoes 
+
 npm install
+
 npm run dev
+
+abrir outro terminal
 
 no arquivo .env mudar DB_DATABASE=laravel para DB_DATABASE=crud_laravel
 
@@ -32,5 +38,5 @@ php artisan key:generate
 
 php artisan serve
 
-agora so acessar server que ele te forneceu 
+agora so acessar serve que ele te forneceu 
 
