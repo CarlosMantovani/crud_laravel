@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Curso;
+use App\Models\Modulo;
+use App\Models\Aula;
 use Illuminate\Database\QueryException;
 class CursoController extends Controller
 
@@ -15,6 +17,7 @@ class CursoController extends Controller
 
     public function create()
     {
+        
         return view('/cursos/create');
     }
 
@@ -33,8 +36,17 @@ class CursoController extends Controller
 
     public function show($id)
     {
+
         $curso = Curso::findOrFail($id);
-        return view('/cursos/show', compact('curso'));
+
+        
+
+    $quantidadeModulos = Modulo::where('curso_id', $id)->count();
+    $quantidadeAulas = Aula::whereIn('modulos_id', Modulo::where('curso_id', $id)->pluck('id'))->count();
+
+    return view('cursos.show', compact('curso', 'quantidadeModulos', 'quantidadeAulas'));
+
+        
     }
 
     public function edit($id)
@@ -71,6 +83,6 @@ class CursoController extends Controller
     {
         $curso = Curso::findOrFail($id);
         $curso->delete();
-        return redirect()->route('cursos.index')->with('success', 'Curso deletado com sucesso.');
+        return redirect()->route('cursos.index');
     }
 }

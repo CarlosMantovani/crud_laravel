@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Models\Aula;
 use App\Models\Modulo;
 use App\Models\Curso;
 class ModuloController extends Controller
@@ -10,6 +12,7 @@ class ModuloController extends Controller
 
     public function index()
     {   
+        
        
         $modulos = Modulo::all();
         foreach ($modulos as $modulo) {
@@ -31,8 +34,8 @@ class ModuloController extends Controller
         'curso_id' => $request->input('curso_id'),
         
     ]);
-    $modulos = Modulo::all();
-    return view('/modulos/index', compact('modulos'));
+    $aulas = Aula::all();
+    return view('/aulas/index', compact('aulas'));
     }
     public function show($id)
     {
@@ -46,6 +49,6 @@ class ModuloController extends Controller
     {
         $modulo = Modulo::findOrFail($id);
         $modulo->delete();
-        return redirect()->route('modulos.index')->with('success', 'Modulo deletado com sucesso.');
+        return redirect()->route('modulos.index');
     }
 }

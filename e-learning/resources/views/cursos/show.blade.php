@@ -9,6 +9,7 @@
   </head>
   <body>
    
+
 <div class="container">
   <h1 style="text-align: center">Detalhes Do Curso</h1>
       <table class="table">
@@ -18,14 +19,18 @@
               <th scope="col">Nome do Curso</th>
               <th scope="col">Titulo</th>
               <th scope="col">Descrição</th>
+              <th scope="col">Quantidade de Cursos</th>
+              <th scope="col">Quantidade de Modulos</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{{ $curso->id }}</td>
               <td>{{ $curso->nome_curso }}</td>
-              <td>{{ $curso->curso_id  }}</td>
+              <td>{{ $curso->titulo  }}</td>
               <td>{{ $curso->descricao }}</td>
+              <td>{{ $quantidadeModulos}}</td>
+              <td>{{ $quantidadeAulas }}</td>
             </tr>
   
           </tbody>
@@ -33,7 +38,6 @@
         </table>
         <a href="{{route('cursos.index')}}"><button type="button" class="btn btn-warning">Voltar</button></a>
 </div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
 

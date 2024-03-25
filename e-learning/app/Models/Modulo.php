@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use App\Models\Curso;
+use App\Models\Aula;
 class Modulo extends Model
 {
     use HasFactory;
@@ -20,7 +21,11 @@ class Modulo extends Model
     {
         return $this->belongsTo(Curso::class,'curso_id', 'id');
     }
-
+    
+    public function relAula(): HasMany
+    {
+    return $this->hasMany(Aula::class);
+    }
 
     
 }
