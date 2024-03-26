@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('cursos', CursoController::class);
     Route::resource('modulos', ModuloController::class);
     Route::resource('aula', AulaController::class);
+    
 });
 
 Auth::routes();

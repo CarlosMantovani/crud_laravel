@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nome_curso', 255);
             $table->string('titulo', 255);
             $table->string('descricao', 255);
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }
