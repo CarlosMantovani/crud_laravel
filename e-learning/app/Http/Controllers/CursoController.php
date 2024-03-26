@@ -6,6 +6,7 @@ use App\Models\Curso;
 use App\Models\Modulo;
 use App\Models\Aula;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
 class CursoController extends Controller
 
 {
@@ -24,12 +25,19 @@ class CursoController extends Controller
     public function store(Request $request)
     {
         
-        
-    Curso::create([
-        'nome_curso' => $request->input('nome'),
-        'titulo' => $request->input('titulo_curso'),
-        'descricao' => $request->input('desc'),
-    ]);
+        $data = [];
+
+        if ($request->hasFile('imagem')) {
+            $data['imagem'] = $request->imagem->store('cursos_imagem');
+        }
+    
+        Curso::create([
+            'nome_curso' => $request->input('nome'),
+            'titulo' => $request->input('titulo_curso'),
+            'descricao' => $request->input('desc'),
+            'imagem' => $data['imagem'] ?? null, 
+        ]);
+    
     $cursos = Curso::all();
     return view('/modulos/create', compact('cursos'));
     }
@@ -58,6 +66,16 @@ class CursoController extends Controller
     public function update(Request $request, $id)
     {
         $curso = Curso::findOrFail($id);
+
+        if ($request->hasFile('imagem')) {
+
+            if (Storage::exists($curso->imagem)) {
+                Storage::delete($curso->imagem);
+            }
+           
+            $curso->imagem = $request->file('imagem')->store('cursos_imagem');
+        }
+
 
         if ($request->filled('nome') && $request->nome != $curso->nome_curso) {
             $curso->nome_curso = $request->nome;

@@ -1,35 +1,29 @@
-<!doctype html>
-<html lang="pt-br">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lista de Cursos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-
-<body>
-    
+@section('content')
     <div class="container">
-        <h1 style="text-align: center">Lista de Cursos</h1>
-        <a href="{{ route('cursos.create') }}"><button type="button" class="btn btn-success mb-5">Cadastrar Curso</button></a>
+        <h1 class="text-center">Lista de Cursos</h1>
+        <a href="{{ route('cursos.create') }}" class="btn btn-success mb-5">Cadastrar Curso</a>
         <ul>
-            @foreach ($cursos as $curso)
-                <li>{{ $curso->nome_curso }}</li>
-                <a href="{{ route('cursos.show', $curso->id) }}"><button type="button"
-                        class="btn btn-primary">Detalhes</button></a>
-                <a href="{{ route('cursos.edit', $curso->id) }}"><button type="button"
-                        class="btn btn-secondary">Editar</button></a>
-                <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display: inline-block;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"
-                        onclick="return confirm('Tem certeza que deseja excluir este curso?')">Deletar</button>
-                </form>
-            @endforeach
+            @forelse ($cursos as $curso)
+                <li>
+                    {{ $curso->nome_curso }}
+                    @if ($curso->imagem)
+                    <img src="{{ url('storage/' . $curso->imagem) }}" alt="{{ $curso->nome_curso }}" style="width: 70px; height: 70px;border-radius:10px">
+                    @else
+                        <img src="{{ url('favicon.ico') }}" alt="{{ $curso->nome_curso }}">
+                    @endif
+                    <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-primary">Detalhes</a>
+                    <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-secondary">Editar</a>
+                    <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display: inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este curso?')">Deletar</button>
+                    </form>
+                </li>
+            @empty
+                <p>Nenhum curso encontrado.</p>
+            @endforelse
         </ul>
     </div>
-</body>
-
-</html>
+@endsection
