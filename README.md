@@ -20,7 +20,10 @@ composer install
 
 composer require laravel/ui
 php artisan ui bootstrap --auth
+
 no para todas as opçoes 
+php artisan storage:link 
+
 npm install
 npm run dev
 
