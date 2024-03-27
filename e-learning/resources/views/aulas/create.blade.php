@@ -14,8 +14,8 @@
                 <input type="text" class="form-control" id="link" name="link" required>
             </div>
             <div class="col-md-6">
-                <label for="modulo_id" class="form-label">Escolha o Módulo</label>
-                <select id="modulo_id" name="modulo_id" class="form-control" required>
+                <label for="modulos_id" class="form-label">Escolha o Módulo</label>
+                <select id="modulos_id" name="modulos_id" class="form-control" required>
                     @foreach ($modulos as $modulo)
                         <option value="{{ $modulo->id }}">{{ $modulo->titulo }}</option>
                     @endforeach
