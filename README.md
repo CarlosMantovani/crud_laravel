@@ -3,7 +3,7 @@
 
 instalar o xammp atraves desse site https://www.apachefriends.org/download.html com essa versao
 
-iniciar o mysql e o apache
+iniciar o mysql
 
 acessar http://localhost/phpmyadmin/
 
@@ -29,7 +29,7 @@ npm install
 
 npm run dev
 
-# No segundo terminal digitar os comandos:
+# Abrir um segundo terminal e digitar os comandos:
 
 php artisan storage:link
 
@@ -46,6 +46,8 @@ php artisan migrate
 php artisan db:seed
 
 php artisan key:generate
+
+php artisan serve
 
 agora so acessar serve que ele te forneceu 
 
