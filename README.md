@@ -31,8 +31,6 @@ npm run dev
 
 # Abrir um segundo terminal e digitar os comandos:
 
-php artisan storage:link
-
 cd crud_laravel
 
 cd e-learning
